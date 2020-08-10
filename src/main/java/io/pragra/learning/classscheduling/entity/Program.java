@@ -21,9 +21,6 @@ public class Program {
     public Long getProgramId() {
         return programId;
     }
-//
-//    @OneToMany
-//    private List<Batch> batchList;
 
     public void setProgramId(Long programId) {
         this.programId = programId;

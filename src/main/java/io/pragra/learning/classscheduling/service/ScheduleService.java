@@ -1,13 +1,11 @@
 package io.pragra.learning.classscheduling.service;
 
 import io.pragra.learning.classscheduling.Repo.ScheduleRepo;
-import io.pragra.learning.classscheduling.entity.Program;
 import io.pragra.learning.classscheduling.entity.Schedule;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ScheduleService {
@@ -16,10 +14,6 @@ public class ScheduleService {
 
     public ScheduleService(ScheduleRepo repo) {
         this.repo = repo;
-    }
-
-    public Schedule createSchedule(Schedule schedule) {
-        return this.repo.save(schedule);
     }
 
     public List<Schedule> listAll(){
@@ -31,8 +25,17 @@ public class ScheduleService {
     }
 
 
-    public List<Schedule> getAllById(Integer id){
-        return this.repo.findAllById(Collections.singleton(id));
+    public Optional<Schedule> getById(Integer id){
+        return this.repo.findById(id);
+    }
+
+    public Integer deleteById(Integer id){
+        if(id != null) {
+            this.repo.deleteById(id);
+            return 1;
+        }
+        else return 0;
+
     }
 
 

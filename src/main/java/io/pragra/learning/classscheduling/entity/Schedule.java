@@ -4,12 +4,15 @@ import javax.persistence.*;
 import java.util.Collections;
 import java.util.List;
 
-
+@Entity
+@Table
 public class Schedule {
     private Long programId;
+
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer scheduleId;
+
     @ElementCollection
     @CollectionTable(name="batchTime")
     private List<String> batchTime;
@@ -29,8 +32,6 @@ public class Schedule {
     public Schedule() {
     }
 
-
-
     @ManyToOne(targetEntity = Program.class,cascade = CascadeType.ALL)
     private Program program;
 
@@ -48,20 +49,28 @@ public class Schedule {
         this.program = program;
     }
 
-
-
-
-    public Schedule(Long programId, Integer scheduleId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
+    public Schedule(Long programId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
         this.programId = programId;
-        this.scheduleId = scheduleId;
         this.batchTime = batchTime;
         this.type = type;
         this.days = days;
         this.status = status;
         this.startDate = startDate;
-//        this.program = program;
-        this.instructor= instructor;
+        this.instructor = instructor;
     }
+
+    //
+//    public Schedule(Long programId, Integer scheduleId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
+//        this.programId = programId;
+//        this.scheduleId = scheduleId;
+//        this.batchTime = batchTime;
+//        this.type = type;
+//        this.days = days;
+//        this.status = status;
+//        this.startDate = startDate;
+////        this.program = program;
+//        this.instructor= instructor;
+//    }
 
     public List<String> getBatchTime() {
         return batchTime;

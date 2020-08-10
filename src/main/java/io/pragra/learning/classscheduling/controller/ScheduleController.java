@@ -1,12 +1,11 @@
 package io.pragra.learning.classscheduling.controller;
 
-import io.pragra.learning.classscheduling.Repo.ScheduleRepo;
 import io.pragra.learning.classscheduling.entity.Schedule;
 import io.pragra.learning.classscheduling.service.ScheduleService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ScheduleController {
@@ -23,8 +22,8 @@ public class ScheduleController {
 
 
     @GetMapping("/schedule/{id}")
-    public List<Schedule> getAllById(Integer id){
-        return this.service.getAllById(id);
+    public Optional<Schedule> getById(@PathVariable Integer id){
+        return this.service.getById(id);
     }
 
 
@@ -33,5 +32,10 @@ public class ScheduleController {
         return this.service.saveSchedule(schedule);
     }
 
+    @DeleteMapping("/schedule/{id}")
+    public void deleteById(@PathVariable Integer id){
+        this.service.deleteById(id);
+
+    }
 
 }
