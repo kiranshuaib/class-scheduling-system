@@ -25,16 +25,18 @@ public class ClassSchedulingSystemApplication {
     CommandLineRunner runner(){
         return args -> {
 
-          Program program = new Program(2389732L);
+          Program program1 = new Program(2389732L);
           Instructor instructor1 = new Instructor("Atin Singh","","https://pragra.gumlet.net/Atin.png");
           Instructor instructor2 = new Instructor("Vivek","","https://pragra.gumlet.net/Vivek.png");
-            Schedule schedule1 = new Schedule(program.getProgramId(), Arrays.asList( "Saturday - 9:30 AM - 12:30 PM EST",
-                    "Wednesday - 8:30 PM - 10:30 PM EST") ,Type.WEEKDAYS,Arrays.asList("Saturday",
-                    "Wednesday"), Status.UPCOMING,instructor1,"Sep 15th, 2020" ," "," "," "," ");
-            Schedule schedule2 = new Schedule(schedule1.getProgramId(), Arrays.asList( "Saturday - 9:30 AM - 12:30 PM EST",
-                    "Wednesday - 8:30 PM - 10:30 PM EST",
-                    "Thursday - 8:30 PM - 10:30 PM EST") ,Type.WEEKEND,Arrays.asList("Saturday",
-                    "Wednesday","Thursday"), Status.ONGOING,instructor2, "Aug 15th, 2020"," "," "," "," " );
+          Batch batch1 = new Batch( Arrays.asList( "Saturday - 9:30 AM - 12:30 PM EST",
+                  "Wednesday - 8:30 PM - 10:30 PM EST") ,Type.WEEKDAYS,Arrays.asList("Saturday",
+                  "Wednesday"), Status.UPCOMING,instructor1,"Sep 15th, 2020" );
+          Batch batch2 = new Batch(Arrays.asList( "Saturday - 9:30 AM - 12:30 PM EST",
+                  "Wednesday - 8:30 PM - 10:30 PM EST",
+                  "Thursday - 8:30 PM - 10:30 PM EST") ,Type.WEEKEND,Arrays.asList("Saturday",
+                  "Wednesday","Thursday"), Status.ONGOING,instructor2, "Aug 15th, 2020");
+            Schedule schedule1 = new Schedule(program1.getProgramId(),batch1," "," "," "," ");
+            Schedule schedule2 = new Schedule(program1.getProgramId(), batch2," "," "," "," " );
             this.service.saveSchedule(schedule1);
             this.service.saveSchedule(schedule2);
 
