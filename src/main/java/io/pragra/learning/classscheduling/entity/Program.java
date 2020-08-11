@@ -18,6 +18,14 @@ public class Program {
         this.programId = programId;
     }
 
+    public Program(Long programId, List<Schedule> schedules) {
+        this.programId = programId;
+        this.schedules = schedules;
+    }
+
+    @OneToMany(targetEntity = Schedule.class,cascade = CascadeType.ALL)
+    private List<Schedule> schedules;
+
     public Long getProgramId() {
         return programId;
     }
@@ -26,4 +34,12 @@ public class Program {
         this.programId = programId;
     }
 
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
+    }
 }

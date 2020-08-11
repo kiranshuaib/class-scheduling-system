@@ -35,10 +35,14 @@ public class ClassSchedulingSystemApplication {
                   "Wednesday - 8:30 PM - 10:30 PM EST",
                   "Thursday - 8:30 PM - 10:30 PM EST") ,Type.WEEKEND,Arrays.asList("Saturday",
                   "Wednesday","Thursday"), Status.ONGOING,instructor2, "Aug 15th, 2020");
-            Schedule schedule1 = new Schedule(program1.getProgramId(),batch1," "," "," "," ");
-            Schedule schedule2 = new Schedule(program1.getProgramId(), batch2," "," "," "," " );
+
+            Schedule schedule1 = new Schedule(program1.getProgramId(),batch1,null,null,null,null);
+            Schedule schedule2 = new Schedule(program1.getProgramId(), batch2,null,null,null,null );
+
+
             this.service.saveSchedule(schedule1);
             this.service.saveSchedule(schedule2);
+            program1.setSchedules(Arrays.asList(schedule1,schedule2));
 
 
 

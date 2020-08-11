@@ -1,9 +1,6 @@
 package io.pragra.learning.classscheduling.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -18,8 +15,10 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne(targetEntity = Program.class,cascade = CascadeType.ALL)
-    private Program program;
+//    @ManyToOne(targetEntity = Program.class,cascade = CascadeType.ALL)
+//    private Program program;
+
+
 
     @Column
     private String createdBy;
@@ -30,12 +29,7 @@ public class Schedule {
     @Column
     private String lastModifiedDate;
 
-
-
-    public Schedule() {
-    }
-
-    public Schedule(Long programId,
+        public Schedule(Long programId,
                     Batch batch,
                     String createdBy,
                     String createdDate,
@@ -49,36 +43,13 @@ public class Schedule {
         this.lastModifiedDate = lastModifiedDate;
     }
 
+    public Schedule() {
+    }
 
 
-    //
-//    public Schedule(Long programId,
-//                    List<String> batchTime,
-//                    Type type,
-//                    List<String> days,
-//                    Status status,
-//                    Instructor instructor,
-//                    String startDate,
-//                    String createdBy,
-//                    String createdDate,
-//                    String lastModifiedBy,
-//                    String lastModifiedDate) {
-//        this.programId = programId;
-//        this.batchTime = batchTime;
-//        this.type = type;
-//        this.days = days;
-//        this.status = status;
-//        this.instructor = instructor;
-//        this.startDate = startDate;
-//        this.createdBy = createdBy;
-//        this.createdDate = createdDate;
-//        this.lastModifiedBy = lastModifiedBy;
-//        this.lastModifiedDate = lastModifiedDate;
-//    }
-
-
-
-
+    public Schedule(UUID id) {
+        this.id = id;
+    }
 
     public Batch getBatch() {
         return batch;
