@@ -76,29 +76,6 @@ public class Schedule {
         this.program = program;
     }
 
-//    public Schedule(Long programId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
-//        this.programId = programId;
-//        this.batchTime = batchTime;
-//        this.type = type;
-//        this.days = days;
-//        this.status = status;
-//        this.startDate = startDate;
-//        this.instructor = instructor;
-//    }
-
-    //
-//    public Schedule(Long programId, UUID scheduleId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
-//        this.programId = programId;
-//        this.scheduleId = scheduleId;
-//        this.batchTime = batchTime;
-//        this.type = type;
-//        this.days = days;
-//        this.status = status;
-//        this.startDate = startDate;
-////        this.program = program;
-//        this.instructor= instructor;
-//    }
-
     public List<String> getBatchTime() {
         return batchTime;
     }
