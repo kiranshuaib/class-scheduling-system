@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 public class ScheduleController {
@@ -22,7 +23,7 @@ public class ScheduleController {
 
 
     @GetMapping("/schedule/{id}")
-    public Optional<Schedule> getById(@PathVariable Integer id){
+    public Optional<Schedule> getById(@PathVariable UUID id){
         return this.service.getById(id);
     }
 
@@ -33,7 +34,7 @@ public class ScheduleController {
     }
 
     @DeleteMapping("/schedule/{id}")
-    public void deleteById(@PathVariable Integer id){
+    public void deleteById(@PathVariable UUID id){
         this.service.deleteById(id);
 
     }

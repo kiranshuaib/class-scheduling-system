@@ -30,11 +30,11 @@ public class ClassSchedulingSystemApplication {
           Instructor instructor2 = new Instructor("Vivek","","https://pragra.gumlet.net/Vivek.png");
             Schedule schedule1 = new Schedule(program.getProgramId(), Arrays.asList( "Saturday - 9:30 AM - 12:30 PM EST",
                     "Wednesday - 8:30 PM - 10:30 PM EST") ,Type.WEEKDAYS,Arrays.asList("Saturday",
-                    "Wednesday"), Status.UPCOMING, "Sep 15th, 2020" ,instructor1);
+                    "Wednesday"), Status.UPCOMING,instructor1,"Sep 15th, 2020" ," "," "," "," ");
             Schedule schedule2 = new Schedule(schedule1.getProgramId(), Arrays.asList( "Saturday - 9:30 AM - 12:30 PM EST",
                     "Wednesday - 8:30 PM - 10:30 PM EST",
                     "Thursday - 8:30 PM - 10:30 PM EST") ,Type.WEEKEND,Arrays.asList("Saturday",
-                    "Wednesday","Thursday"), Status.ONGOING, "Aug 15th, 2020" ,instructor2);
+                    "Wednesday","Thursday"), Status.ONGOING,instructor2, "Aug 15th, 2020"," "," "," "," " );
             this.service.saveSchedule(schedule1);
             this.service.saveSchedule(schedule2);
 

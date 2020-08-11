@@ -1,8 +1,10 @@
 package io.pragra.learning.classscheduling.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table
@@ -11,11 +13,11 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer scheduleId;
+    private UUID scheduleId;
 
     @ElementCollection
     @CollectionTable(name="batchTime")
-    private List<String> batchTime;
+    private List<String> batchTime = new ArrayList<>();
     @Column
     private Type type;
 
@@ -24,43 +26,68 @@ public class Schedule {
     private List<String> days;
     @Column
     private Status status;
+    @ManyToOne(targetEntity = Program.class,cascade = CascadeType.ALL)
+    private Program program;
+
+    @OneToOne(targetEntity = Instructor.class,cascade = CascadeType.ALL)
+//    private List<Instructor> instructors;
+    private Instructor instructor;
     @Column
     private String startDate;
+    @Column
+    private String createdBy;
+    @Column
+    private String createdDate;
+
+    private String lastModifiedBy;
+
+    private String lastModifiedDate;
 
 
 
     public Schedule() {
     }
 
-    @ManyToOne(targetEntity = Program.class,cascade = CascadeType.ALL)
-    private Program program;
-
-//    @OneToMany(targetEntity = Batch.class,cascade = CascadeType.ALL)
-//    private List<Batch> batchList;
-
-    @OneToOne(targetEntity = Instructor.class,cascade = CascadeType.ALL)
-//    private List<Instructor> instructors;
-    private Instructor instructor;
-
-
-
-
-    public void setProgram(Program program) {
-        this.program = program;
-    }
-
-    public Schedule(Long programId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
+    public Schedule(Long programId,
+                    List<String> batchTime,
+                    Type type,
+                    List<String> days,
+                    Status status,
+                    Instructor instructor,
+                    String startDate,
+                    String createdBy,
+                    String createdDate,
+                    String lastModifiedBy,
+                    String lastModifiedDate) {
         this.programId = programId;
         this.batchTime = batchTime;
         this.type = type;
         this.days = days;
         this.status = status;
-        this.startDate = startDate;
         this.instructor = instructor;
+        this.startDate = startDate;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.lastModifiedBy = lastModifiedBy;
+        this.lastModifiedDate = lastModifiedDate;
     }
 
+    public void setProgram(Program program) {
+        this.program = program;
+    }
+
+//    public Schedule(Long programId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
+//        this.programId = programId;
+//        this.batchTime = batchTime;
+//        this.type = type;
+//        this.days = days;
+//        this.status = status;
+//        this.startDate = startDate;
+//        this.instructor = instructor;
+//    }
+
     //
-//    public Schedule(Long programId, Integer scheduleId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
+//    public Schedule(Long programId, UUID scheduleId, List<String> batchTime, Type type, List<String> days, Status status, String startDate, Instructor instructor) {
 //        this.programId = programId;
 //        this.scheduleId = scheduleId;
 //        this.batchTime = batchTime;
@@ -88,11 +115,11 @@ public class Schedule {
         this.programId = programId;
     }
 
-    public Integer getScheduleId() {
+    public UUID getScheduleId() {
         return scheduleId;
     }
 
-    public void setScheduleId(Integer scheduleId) {
+    public void setScheduleId(UUID scheduleId) {
         this.scheduleId = scheduleId;
     }
 
