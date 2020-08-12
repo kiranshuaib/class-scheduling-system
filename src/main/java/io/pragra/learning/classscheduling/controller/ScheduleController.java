@@ -5,7 +5,6 @@ import io.pragra.learning.classscheduling.service.ScheduleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -16,24 +15,24 @@ public class ScheduleController {
         this.service = service;
     }
 
-    @GetMapping("/schedule")
+    @GetMapping("/schedules")
     public List<Schedule> getAll(){
         return this.service.listAll();
     }
 
 
-    @GetMapping("/schedule/{id}")
-    public Optional<Schedule> getById(@PathVariable UUID id){
+    @GetMapping("/schedules/{id}")
+    public Schedule getById(@PathVariable UUID id){
         return this.service.getById(id);
     }
 
 
-    @PostMapping("/schedule")
+    @PostMapping("/schedules")
     public Schedule saveSchedule(@RequestBody Schedule schedule){
         return this.service.saveSchedule(schedule);
     }
 
-    @DeleteMapping("/schedule/{id}")
+    @DeleteMapping("/schedules/{id}")
     public void deleteById(@PathVariable UUID id){
         this.service.deleteById(id);
 

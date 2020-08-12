@@ -4,9 +4,7 @@ import io.pragra.learning.classscheduling.Repo.ScheduleRepo;
 import io.pragra.learning.classscheduling.entity.Schedule;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -27,8 +25,9 @@ public class ScheduleService {
     }
 
 
-    public Optional<Schedule> getById(UUID id){
-        return this.repo.findById(id);
+    public Schedule getById(UUID id){
+        return this.repo.findById(id)
+                .orElseThrow(()->new RuntimeException("Invalid Id or No Data"));
     }
 
     public Integer deleteById(UUID id){
@@ -37,6 +36,9 @@ public class ScheduleService {
             return 1;
         }
         return 0;
+
+
+
     }
 
 
