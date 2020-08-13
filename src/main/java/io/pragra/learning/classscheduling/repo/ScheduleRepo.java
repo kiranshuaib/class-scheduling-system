@@ -1,4 +1,4 @@
-package io.pragra.learning.classscheduling.Repo;
+package io.pragra.learning.classscheduling.repo;
 
 import io.pragra.learning.classscheduling.entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;

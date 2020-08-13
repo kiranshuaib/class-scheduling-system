@@ -1,6 +1,6 @@
 package io.pragra.learning.classscheduling.service;
 
-import io.pragra.learning.classscheduling.Repo.ScheduleRepo;
+import io.pragra.learning.classscheduling.repo.ScheduleRepo;
 import io.pragra.learning.classscheduling.entity.Schedule;
 import org.springframework.stereotype.Service;
 
