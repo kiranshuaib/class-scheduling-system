@@ -30,14 +30,8 @@ public class ScheduleService {
                 .orElseThrow(()->new RuntimeException("Invalid Id or No Data"));
     }
 
-    public Integer deleteById(UUID id){
-        if(id != null) {
+    public void deleteById(UUID id){
             this.repo.deleteById(id);
-            return 1;
-        }
-        return 0;
-
-
 
     }
 
